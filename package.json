@@ -1,9 +1,9 @@
 {
-  "name": "create-react-component-vscode",
-  "publisher": "yeet-bix",
-  "displayName": "Create React Component",
+  "name": "create-react-component-vscode with storybook and testfile",
+  "publisher": "mochi-sann",
+  "displayName": "Create React Component with test and Stories",
   "description": "⚛️⚡Generate React Component Boilerplate",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "vscode": "^1.36.0"
@@ -13,13 +13,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yeet-bix/create-react-component-vscode.git"
+    "url": "https://github.com/mochi-sann/create-react-comporent-with-storybook-and-test-file-vscode.git"
   },
   "bugs": {
-    "url": "https://github.com/yeet-bix/create-react-component-vscode/issues",
+    "url": "https://github.com/mochi-sann/create-react-component-vscode/issues",
     "email": "kiam.letchup@gmail.com"
   },
-  "homepage": "https://github.com/yeet-bix/create-react-component-vscode/blob/master/README.md",
+  "homepage": "https://github.com/mochi-sann/create-react-comporent-with-storybook-and-test-file-vscode#readme",
   "icon": "images/icon.png",
   "keywords": [
     "react",
@@ -105,11 +105,9 @@
         "createReactComponent.functionType": {
           "type": "string",
           "enum": [
-            "function",
             "expression"
           ],
           "enumDescriptions": [
-            "Generate functions",
             "Generate function expressions"
           ],
           "default": "function",

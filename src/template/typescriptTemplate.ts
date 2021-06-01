@@ -7,7 +7,7 @@ export type Props = {}
 
 const ${name}: React.VFC<Props> = (props) => {
     return (
-        <></>
+        <>${name}</>
     )
 }
 
@@ -25,10 +25,10 @@ const reactTestingLibraryTemplate = ({ name, cleanup }: TemplateOptions) => `imp
   cleanup ? 'cleanup, ' : ''
 }render } from '@testing-library/react';
 import React from 'react';
-import ${name}, { ${name}Props } from './${name}';
+import ${name}, { Props } from './${name}';
 
 describe('${name}', () => {
-    ${cleanup ? 'afterEach(cleanup);\n\t' : ''}const defaultProps: ${name}Props = {};
+    ${cleanup ? 'afterEach(cleanup);\n\t' : ''}const defaultProps: Props = {};
 
     it('should render', () => {
         const props = { ...defaultProps };
@@ -56,4 +56,26 @@ describe('${name}', () => {
 });
 `;
 
-export { typescriptComponentTemplate, typescriptTestTemplate };
+const StoryBookTSTemplate = ({ name, functionType }: TemplateOptions) => `
+import { Meta, Story } from "@storybook/react"
+import React from "react"
+
+import ${name}, { Props } from "./${name}"
+
+export default {
+  title: "coponent/${name}",
+  component: ${name},
+  argTypes: {
+    
+  }
+} as Meta
+
+const Template: Story<Props> = (args) => <${name} {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+}
+
+`;
+
+export { typescriptComponentTemplate, typescriptTestTemplate, StoryBookTSTemplate };

@@ -1,9 +1,16 @@
 import * as vscode from 'vscode';
 import { createFile, createFolder } from './file';
-import { indexTemplate } from './template/indexTemplate';
-import { javascriptComponentTemplate, javascriptTestTemplate } from './template/javascriptTemplate';
+import {
+  javascriptComponentTemplate,
+  javascriptTestTemplate,
+  StoryBookJSTemplate,
+} from './template/javascriptTemplate';
 import TemplateOptions, { FileExtension, FileType, FunctionType, TestLibrary } from './template/templateOptions';
-import { typescriptComponentTemplate, typescriptTestTemplate } from './template/typescriptTemplate';
+import {
+  typescriptComponentTemplate,
+  typescriptTestTemplate,
+  StoryBookTSTemplate,
+} from './template/typescriptTemplate';
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand('extension.createReactComponent', async (uri: vscode.Uri) => {
@@ -25,27 +32,38 @@ export function activate(context: vscode.ExtensionContext) {
       };
       const createModule = config.get('createModule') as boolean;
       const dir = createModule ? `${uri.path}/${componentName}` : uri.path;
-      const indexUri = `${dir}/こんちはー.${isTypescript ? 'ts' : 'js'}`;
+      const indexUri = `${dir}/index.${isTypescript ? 'ts' : 'js'}`;
       const isWithX = options.fileExtension === 'withX';
       const typescriptFileExtension = isWithX ? 'tsx' : 'ts';
       const javascriptFileExtension = isWithX ? 'jsx' : 'js';
       const fileExtension = isTypescript ? typescriptFileExtension : javascriptFileExtension;
       const componentUri = `${dir}/${componentName}.${fileExtension}`;
-      const testUri = `${dir}/${componentName}.test.${fileExtension}`;
+      const testFileUri = `${dir}/${componentName}.test.${fileExtension}`;
+      const StoriesFileUri = `${dir}/${componentName}.stories.${fileExtension}`;
 
       if (createModule) {
+        // フォルダーを作る
         createFolder(dir, vscode.window);
-        createFile(indexUri, indexTemplate(options), vscode.window);
+        // createFile(indexUri, indexTemplate(options), vscode.window);
       }
-
+      // Componentファイルを作る
       createFile(
         componentUri,
         isTypescript ? typescriptComponentTemplate(options) : javascriptComponentTemplate(options),
         vscode.window,
       );
+
+      // テストファイルを作る
       createFile(
-        testUri,
+        testFileUri,
         isTypescript ? typescriptTestTemplate(options) : javascriptTestTemplate(options),
+        vscode.window,
+      );
+
+      // stories ファイルを作る
+      createFile(
+        StoriesFileUri,
+        isTypescript ? StoryBookTSTemplate(options) : StoryBookJSTemplate(options),
         vscode.window,
       );
 
@@ -59,7 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
         await vscode.window.showTextDocument(document, textDocumentShowOptions);
       }
       if (openFiles.includes('test' as FileType)) {
-        const document = await vscode.workspace.openTextDocument(testUri);
+        const document = await vscode.workspace.openTextDocument(testFileUri);
         await vscode.window.showTextDocument(document, textDocumentShowOptions);
       }
       if (openFiles.includes('index' as FileType)) {
