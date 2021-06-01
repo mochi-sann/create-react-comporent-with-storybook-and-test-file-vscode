@@ -1,8 +1,8 @@
 <h2 align="center">
   ⚛️<br>
-  <b>Create React Component</b><br>
+  <b>create react comporent with storybook and test file</b><br>
   <p></p>
-  <img src="https://github.com/mochi-sann/create-react-comporent-with-storybook-and-test-file-vscode/blob/master/images/demo.gif">
+  <img src="https://user-images.githubusercontent.com/44772513/120330214-92dc8b00-c327-11eb-80db-a282f78266b9.gif">
 </h2>
 
 > A simple but powerful vscode extension that removes the hassle of writing annoying boilerplate everytime you want to create component.
