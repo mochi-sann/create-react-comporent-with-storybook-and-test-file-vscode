@@ -27,3 +27,6 @@
 | `createReactComponent.fileExtension`          | Specifies the extension type of files: `withX` would create `MyComponent.tsx` or `MyComponent.jsx`. `withoutX` would create `MyComponent.ts` or `MyComponent.js` files <br><br> Options: <br> - `withX` (_default_) <br> - `withoutX` |
 | `createReactComponent.module`                 | Specifies whether or not to create a module <br><br> Options: <br> - `true` (_default_) <br> - `false`                                                                                                                                |  |
 | `createReactComponent.openFiles`              | Specifies what files to open after generating the component <br><br> File Types: <br> - `component` <br> - `test` <br> - `index` <br><br> Options: <br> - `['component']` (default)                                                   |
+
+
+This extension is a forked version of https://github.com/yeet-bix/create-react-component-vscode
