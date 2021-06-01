@@ -1,25 +1,28 @@
-import TemplateOptions, { TestLibrary, FunctionType } from './templateOptions';
+import TemplateOptions, { TestLibrary } from './templateOptions';
 
-const typescriptComponentTemplate = ({ name, functionType }: TemplateOptions) => `import React from 'react';
+const typescriptComponentTemplate = ({ name, functionType }: TemplateOptions) => `
+import React from "react"
 
-export interface ${name}Props {}
+export type Props = {}
 
-${functionType === FunctionType.Function ? `function ${name}({ }: ${name}Props) {` : ''}${functionType === FunctionType.Expression ? `const ${name}: React.FunctionComponent<${name}Props> = ({ }) => {` : ''}
-    return <>${name}</>;
-};
+const ${name}: React.VFC<Props> = (props) => {
+    return (
+        <></>
+    )
+}
 
-export default ${name};
+export default ${name}
 `;
 
 const typescriptTestTemplate = (templateOptions: TemplateOptions) => {
-    const { testLibrary } = templateOptions;
-    return testLibrary === TestLibrary.Enzyme
-        ? enzymeTemplate(templateOptions)
-        : reactTestingLibraryTemplate(templateOptions);
+  const { testLibrary } = templateOptions;
+  return testLibrary === TestLibrary.Enzyme
+    ? enzymeTemplate(templateOptions)
+    : reactTestingLibraryTemplate(templateOptions);
 };
 
 const reactTestingLibraryTemplate = ({ name, cleanup }: TemplateOptions) => `import { ${
-    cleanup ? 'cleanup, ' : ''
+  cleanup ? 'cleanup, ' : ''
 }render } from '@testing-library/react';
 import React from 'react';
 import ${name}, { ${name}Props } from './${name}';

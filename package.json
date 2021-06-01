@@ -1,173 +1,173 @@
 {
-    "name": "create-react-component-vscode",
-    "publisher": "yeet-bix",
-    "displayName": "Create React Component",
-    "description": "⚛️⚡Generate React Component Boilerplate",
-    "version": "0.2.0",
-    "license": "SEE LICENSE IN LICENSE",
-    "engines": {
-        "vscode": "^1.36.0"
-    },
-    "categories": [
-        "Other"
+  "name": "create-react-component-vscode",
+  "publisher": "yeet-bix",
+  "displayName": "Create React Component",
+  "description": "⚛️⚡Generate React Component Boilerplate",
+  "version": "0.2.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "vscode": "^1.36.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeet-bix/create-react-component-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yeet-bix/create-react-component-vscode/issues",
+    "email": "kiam.letchup@gmail.com"
+  },
+  "homepage": "https://github.com/yeet-bix/create-react-component-vscode/blob/master/README.md",
+  "icon": "images/icon.png",
+  "keywords": [
+    "react",
+    "generate",
+    "component",
+    "boilerplate"
+  ],
+  "activationEvents": [
+    "onCommand:extension.createReactComponent"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.createReactComponent",
+        "title": "Create React Component"
+      }
     ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/yeet-bix/create-react-component-vscode.git"
-    },
-    "bugs": {
-        "url": "https://github.com/yeet-bix/create-react-component-vscode/issues",
-        "email": "kiam.letchup@gmail.com"
-    },
-    "homepage": "https://github.com/yeet-bix/create-react-component-vscode/blob/master/README.md",
-    "icon": "images/icon.png",
-    "keywords": [
-        "react",
-        "generate",
-        "component",
-        "boilerplate"
-    ],
-    "activationEvents": [
-        "onCommand:extension.createReactComponent"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.createReactComponent",
-                "title": "Create React Component"
-            }
-        ],
-        "menus": {
-            "commandPalette": [
-                {
-                    "command": "extension.createReactComponent",
-                    "when": "false"
-                }
-            ],
-            "explorer/context": [
-                {
-                    "when": "explorerResourceIsFolder",
-                    "command": "extension.createReactComponent",
-                    "group": "create-react-component"
-                }
-            ]
-        },
-        "configuration": {
-            "type": "object",
-            "title": "Create React Component",
-            "properties": {
-                "createReactComponent.language": {
-                    "type": "string",
-                    "default": "typescript",
-                    "enum": [
-                        "typescript",
-                        "javascript"
-                    ],
-                    "enumDescriptions": [
-                        "Generates component in typescript",
-                        "Generates component in javascript"
-                    ],
-                    "description": "Specifies what language to generate the component"
-                },
-                "createReactComponent.testingLibrary": {
-                    "type": "string",
-                    "default": "react-testing-library",
-                    "enum": [
-                        "react-testing-library",
-                        "enzyme"
-                    ],
-                    "enumDescriptions": [
-                        "Generate tests that use react-testing-library",
-                        "Generate tests that use enzyme"
-                    ],
-                    "description": "Specifies what testing library to use"
-                },
-                "createReactComponent.testingLibrary.cleanup": {
-                    "type": "boolean",
-                    "default": "false",
-                    "description": "Specifies whether or not to generate cleanup when using react-testing-library"
-                },
-                "createReactComponent.fileExtension": {
-                    "type": "string",
-                    "enum": [
-                        "withX",
-                        "withoutX"
-                    ],
-                    "default": "withX",
-                    "description": "Specifies the extension type of files: .ie 'withX' would create 'MyComponent.tsx' or 'MyComponent.jsx'. 'withoutX' would create 'MyComponent.ts' or 'MyComponent.js' files"
-                },
-                "createReactComponent.createModule": {
-                    "type": "boolean",
-                    "default": "true",
-                    "description": "Specifies whether or not to create the component as a module"
-                },
-                "createReactComponent.functionType": {
-                    "type": "string",
-                    "enum": [
-                        "function",
-                        "expression"
-                    ],
-                    "enumDescriptions": [
-                        "Generate functions",
-                        "Generate function expressions"
-                    ],
-                    "default": "function",
-                    "description": "Specifies whether to use a normal function or function expression for the component"
-                },
-                "createReactComponent.openFiles": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "component",
-                            "test",
-                            "index"
-                        ],
-                        "enumDescriptions": [
-                            "Open component file",
-                            "Open test file",
-                            "Open index file"
-                        ]
-                    },
-                    "default": [
-                        "component"
-                    ],
-                    "description": "Specifies what files to open after generating the component"
-                }
-            }
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.createReactComponent",
+          "when": "false"
         }
+      ],
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "extension.createReactComponent",
+          "group": "create-react-component"
+        }
+      ]
     },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile",
-        "test:integration": "npm run compile && node ./out/integration-test/runTest.js",
-        "test:unit": "mocha -r ts-node/register 'src/**/*.test.ts' --exclude 'src/integration-test/**/*'"
-    },
-    "devDependencies": {
-        "@types/chai": "^4.2.5",
-        "@types/glob": "^7.1.1",
-        "@types/mocha": "^5.2.6",
-        "@types/node": "^12.12.12",
-        "@types/sinon": "^7.5.1",
-        "@types/vscode": "^1.36.0",
-        "@typescript-eslint/eslint-plugin": "^2.8.0",
-        "@typescript-eslint/parser": "^2.8.0",
-        "chai": "^4.2.0",
-        "eslint": "^6.7.0",
-        "eslint-config-airbnb": "^18.0.1",
-        "eslint-config-prettier": "^6.7.0",
-        "eslint-plugin-import": "^2.18.2",
-        "eslint-plugin-prettier": "^3.1.1",
-        "glob": "^7.1.6",
-        "mocha": "^6.2.2",
-        "prettier": "^1.19.1",
-        "sinon": "^7.5.0",
-        "ts-node": "^8.5.2",
-        "typescript": "^3.7.2",
-        "vscode-test": "^1.2.3"
-    },
-    "dependencies": {}
+    "configuration": {
+      "type": "object",
+      "title": "Create React Component",
+      "properties": {
+        "createReactComponent.language": {
+          "type": "string",
+          "default": "typescript",
+          "enum": [
+            "typescript",
+            "javascript"
+          ],
+          "enumDescriptions": [
+            "Generates component in typescript",
+            "Generates component in javascript"
+          ],
+          "description": "Specifies what language to generate the component"
+        },
+        "createReactComponent.testingLibrary": {
+          "type": "string",
+          "default": "react-testing-library",
+          "enum": [
+            "react-testing-library",
+            "enzyme"
+          ],
+          "enumDescriptions": [
+            "Generate tests that use react-testing-library",
+            "Generate tests that use enzyme"
+          ],
+          "description": "Specifies what testing library to use"
+        },
+        "createReactComponent.testingLibrary.cleanup": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Specifies whether or not to generate cleanup when using react-testing-library"
+        },
+        "createReactComponent.fileExtension": {
+          "type": "string",
+          "enum": [
+            "withX",
+            "withoutX"
+          ],
+          "default": "withX",
+          "description": "Specifies the extension type of files: .ie 'withX' would create 'MyComponent.tsx' or 'MyComponent.jsx'. 'withoutX' would create 'MyComponent.ts' or 'MyComponent.js' files"
+        },
+        "createReactComponent.createModule": {
+          "type": "boolean",
+          "default": "true",
+          "description": "Specifies whether or not to create the component as a module"
+        },
+        "createReactComponent.functionType": {
+          "type": "string",
+          "enum": [
+            "function",
+            "expression"
+          ],
+          "enumDescriptions": [
+            "Generate functions",
+            "Generate function expressions"
+          ],
+          "default": "function",
+          "description": "Specifies whether to use a normal function or function expression for the component"
+        },
+        "createReactComponent.openFiles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "component",
+              "test",
+              "index"
+            ],
+            "enumDescriptions": [
+              "Open component file",
+              "Open test file",
+              "Open index file"
+            ]
+          },
+          "default": [
+            "component"
+          ],
+          "description": "Specifies what files to open after generating the component"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test:integration": "npm run compile && node ./out/integration-test/runTest.js",
+    "test:unit": "mocha -r ts-node/register 'src/**/*.test.ts' --exclude 'src/integration-test/**/*'"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.5",
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^12.12.12",
+    "@types/sinon": "^7.5.1",
+    "@types/vscode": "^1.36.0",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.7.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "glob": "^7.1.6",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "sinon": "^7.5.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2",
+    "vscode-test": "^1.2.3"
+  },
+  "dependencies": {}
 }
