@@ -1,6 +1,6 @@
 {
-  "name": "create-react-component-vscode with storybook and testfile",
-  "publisher": "mochi-sann",
+  "name": "create-react-component-with-storybook-and-testfile",
+  "publisher": "mochisann",
   "displayName": "Create React Component with test and Stories",
   "description": "⚛️⚡Generate React Component Boilerplate",
   "version": "0.1.0",
@@ -25,7 +25,8 @@
     "react",
     "generate",
     "component",
-    "boilerplate"
+    "boilerplate",
+    "typescript"
   ],
   "activationEvents": [
     "onCommand:extension.createReactComponent"
