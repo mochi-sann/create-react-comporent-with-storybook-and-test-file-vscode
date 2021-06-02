@@ -1,14 +1,13 @@
 import TemplateOptions, { TestLibrary } from './templateOptions';
 
-const typescriptComponentTemplate = ({ name, functionType }: TemplateOptions) => `
-import React from "react"
+const typescriptComponentTemplate = ({ name, functionType }: TemplateOptions) => `import React from "react"
 
 export type Props = {}
 
 const ${name}: React.VFC<Props> = (props) => {
-    return (
-        <>${name}</>
-    )
+  return (
+    <>${name}</>
+  )
 }
 
 export default ${name}
@@ -28,15 +27,15 @@ import React from 'react';
 import ${name}, { Props } from './${name}';
 
 describe('${name}', () => {
-    ${cleanup ? 'afterEach(cleanup);\n\t' : ''}const defaultProps: Props = {};
+  ${cleanup ? 'afterEach(cleanup);\n\t' : ''}const defaultProps: Props = {};
 
-    it('should render', () => {
-        const props = { ...defaultProps };
-        const { asFragment, queryByText } = render(<${name} {...props} />);
+  it('should render', () => {
+    const props = { ...defaultProps };
+    const { asFragment, queryByText } = render(<${name} {...props} />);
 
-        expect(asFragment()).toMatchSnapshot();
-        expect(queryByText('${name}')).toBeTruthy();
-    });
+    expect(asFragment()).toMatchSnapshot();
+    expect(queryByText('${name}')).toBeTruthy();
+  });
 });
 `;
 
@@ -45,14 +44,14 @@ import React from 'react';
 import ${name}, { ${name}Props } from './${name}';
 
 describe('${name}', () => {
-    const defaultProps: ${name}Props = {};
+  const defaultProps: ${name}Props = {};
 
-    it('should render', () => {
-        const props = {...defaultProps};
-        const wrapper = shallow(<${name} {...props} />);
+  it('should render', () => {
+    const props = {...defaultProps};
+    const wrapper = shallow(<${name} {...props} />);
 
-        expect(wrapper).toMatchSnapshot();
-    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 `;
 
