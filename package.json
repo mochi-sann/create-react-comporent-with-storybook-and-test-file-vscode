@@ -3,7 +3,7 @@
   "publisher": "mochisann",
   "displayName": "Create React Component with test and Stories",
   "description": "⚛️⚡Generate React Component Boilerplate",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "vscode": "^1.36.0"
